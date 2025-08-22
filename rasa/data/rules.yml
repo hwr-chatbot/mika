@@ -1,0 +1,33 @@
+version: '3.1'
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: say_goodbye
+  - action: utter_say_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Implementation of the Two-Stage-Fallback
+  steps:
+    - intent: nlu_fallback
+    - action: utter_please_rephrase
+
+- rule: respond to chitchat
+  steps:
+    - intent: chitchat
+    - action: utter_chitchat
+
+# - rule: Process multiple intents
+#   steps:
+#     - intent: ask_multiple_questions
+#     - action: action_process_and_respond
+  
+    
+#- rule: Say you're welcome anytime the user says thank you
+#  steps:
+#    - intent: bedanken
+#    - action: utter_gerne    

@@ -1,0 +1,18 @@
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Feedback {
+  id           Int      @id @default(autoincrement())
+  userMessage  String
+  botMessage   String   @db.Text
+  feedbackType String
+  comment      String?
+  createdAt    DateTime @default(now())
+}

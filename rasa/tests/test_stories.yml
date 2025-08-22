@@ -1,0 +1,30 @@
+stories:
+- story: teststory1
+  steps:
+  - user: |
+      Hi
+    intent: welcome
+  - action: utter_welcome
+  - user: |
+      I am from Iran. Can I hand in GRE instead of GMAT?
+    intent: gre_instead_gmat
+  - action: utter_gre_instead_gmat
+  - user: |
+      Is GMAT even needed?
+    intent: whats_gmat
+  - action: utter_whats_gmat
+  - user: |
+      Thanks
+    intent: thank
+  - action: utter_thank
+     
+- story: teststory2
+  steps:
+  - user: |
+      Hi
+    intent: welcome
+  - action: utter_welcome
+  - user: |
+      I studied at an international university. How can I apply?
+    intent: application_from_international_university
+  - action: utter_application_from_international_university
