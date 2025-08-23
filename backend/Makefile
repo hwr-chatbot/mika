@@ -13,6 +13,9 @@ init:
 migrate:
 	yarn prisma migrate dev
 
+migrate-create:
+	yarn prisma migrate dev --create-only
+
 migration-create:
 	@if [ -z "$(name)" ]; then \
 		echo "❌ Please provide a name: make migration-create name=add_users_table"; \

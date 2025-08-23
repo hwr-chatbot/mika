@@ -13,4 +13,11 @@ export enum FeedbackType {
 export type ProvidedFeedback = {
 	option: FeedbackOptions;
 	type?: FeedbackType;
+	comment?: string;
+};
+
+export type SaveFeedbackPayload = {
+	userMessage: string;
+	botMessage: string;
+	feedback: ProvidedFeedback;
 };

@@ -10,7 +10,7 @@ import { FeedbackType } from '@type/Feedback';
 type FeedbackModalProps = {
 	userMessage: ChatMessage;
 	botMessage: ChatMessage;
-	onClose: (feedbackType: FeedbackType | null) => void;
+	onClose: (feedbackType: FeedbackType | null, comment: string) => void;
 };
 
 export const FeedbackModal = ({ userMessage, botMessage, onClose }: FeedbackModalProps) => {
@@ -27,7 +27,10 @@ export const FeedbackModal = ({ userMessage, botMessage, onClose }: FeedbackModa
 
 	return (
 		<div className="fixed inset-0 z-20 flex items-center justify-center">
-			<div className="absolute inset-0 bg-black opacity-50" onClick={() => onClose(selectedAnswer)}></div>
+			<div
+				className="absolute inset-0 bg-black opacity-50"
+				onClick={() => onClose(selectedAnswer, comment)}
+			></div>
 			<div
 				className="relative z-30 bg-white rounded-xl p-6 shadow-lg flex flex-col gap-4 max-w-[1000px]"
 				onClick={(e) => e.stopPropagation()}
@@ -36,7 +39,7 @@ export const FeedbackModal = ({ userMessage, botMessage, onClose }: FeedbackModa
 					<h1 className="text-[#202020] text-2xl font-bold tracking-tight text-left">Help us improve MIKA</h1>
 					<button
 						className="w-8 h-8 flex items-center justify-center hover:cursor-pointer hover:bg-[#E8E8E8] p-1 rounded-full"
-						onClick={() => onClose(selectedAnswer)}
+						onClick={() => onClose(selectedAnswer, comment)}
 					>
 						<XIcon width={16} height={16} color="#5D5D5D" />
 					</button>
@@ -109,7 +112,7 @@ export const FeedbackModal = ({ userMessage, botMessage, onClose }: FeedbackModa
 					<button
 						className="bg-[#D40C2E] text-white font-semibold p-4 px-8 rounded-xl hover:bg-[#b10925] disabled:bg-[#E8E8E8] disabled:text-gray-400"
 						disabled={selectedAnswer === null}
-						onClick={() => onClose(selectedAnswer)}
+						onClick={() => onClose(selectedAnswer, comment)}
 					>
 						Submit
 					</button>

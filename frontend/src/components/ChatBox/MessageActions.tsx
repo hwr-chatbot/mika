@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChatMessage } from 'src/type/ChatMessage';
-import { FeedbackOptions, FeedbackType, ProvidedFeedback } from 'src/type/Feedback';
+import { FeedbackOptions, FeedbackType, ProvidedFeedback, SaveFeedbackPayload } from 'src/type/Feedback';
 
 import { FeedbackModal } from '@components/FeedbackModal/FeedbackModal';
 
@@ -8,7 +8,7 @@ import { ThumbsUpIcon } from '@icons/ThumbsUpIcon';
 import { ThumbsUpIconFilled } from '@icons/ThumbsUpIconFilled';
 
 import { useChat } from '@services/ChatManager/ChatContext';
-import { saveFeedback } from '@services/Feedback/FeedbackAPI';
+import { saveFeedback } from '@services/Feedback/FeedbackApi';
 
 type MessageActionsProps = {
 	index: number;
@@ -27,32 +27,44 @@ export const MessageActions = ({ index, botMessage }: MessageActionsProps) => {
 			setOpenFeedback(true);
 		} else {
 			const userMessage = getMessage(index - 1);
-			setProvidedFeedback({ option: FeedbackOptions.Good });
+			const providedFeedback: ProvidedFeedback = { option: FeedbackOptions.Good };
+
+			setProvidedFeedback(providedFeedback);
+
+			const saveFeedbackPayload: SaveFeedbackPayload = {
+				userMessage: userMessage.text,
+				botMessage: botMessage.text,
+				feedback: providedFeedback,
+			};
 
 			try {
-				await saveFeedback({
-					userMessage: userMessage.text,
-					botMessage: botMessage.text,
-					feedbackType: 'GOOD',
-				});
+				await saveFeedback(saveFeedbackPayload);
 			} catch (err) {
 				console.error('Failed to save feedback', err);
 			}
 		}
 	};
 
-	const submitFeedback = async (feedbackType: FeedbackType | null) => {
+	const submitFeedback = async (feedbackType: FeedbackType | null, comment: string) => {
 		setOpenFeedback(false);
 		if (feedbackType) {
 			const userMessage = getMessage(index - 1);
-			setProvidedFeedback({ option: FeedbackOptions.Bad, type: feedbackType });
+			const providedFeedback: ProvidedFeedback = {
+				option: FeedbackOptions.Bad,
+				type: feedbackType,
+				comment: comment,
+			};
+
+			setProvidedFeedback(providedFeedback);
+
+			const saveFeedbackPayload: SaveFeedbackPayload = {
+				userMessage: userMessage.text,
+				botMessage: botMessage.text,
+				feedback: providedFeedback,
+			};
 
 			try {
-				await saveFeedback({
-					userMessage: userMessage.text,
-					botMessage: botMessage.text,
-					feedbackType,
-				});
+				await saveFeedback(saveFeedbackPayload);
 			} catch (err) {
 				console.error('Failed to save feedback', err);
 			}

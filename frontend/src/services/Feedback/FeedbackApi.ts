@@ -1,11 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-export type SaveFeedbackPayload = {
-	userMessage: string;
-	botMessage: string;
-	feedbackType: string;
-	comment?: string;
-};
+import { SaveFeedbackPayload } from '@type/Feedback';
 
 export async function saveFeedback(payload: SaveFeedbackPayload) {
 	const apiUrl = import.meta.env.VITE_BACKEND_API_URL;

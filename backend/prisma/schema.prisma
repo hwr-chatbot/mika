@@ -9,10 +9,11 @@ generator client {
 }
 
 model Feedback {
-  id           Int      @id @default(autoincrement())
-  userMessage  String
-  botMessage   String   @db.Text
-  feedbackType String
-  comment      String?
-  createdAt    DateTime @default(now())
+  id              Int      @id @default(autoincrement())
+  userMessage     String
+  botMessage      String   @db.Text
+  feedbackOption  String
+  feedbackType    String?
+  comment         String?
+  createdAt       DateTime @default(now())
 }
