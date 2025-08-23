@@ -6,10 +6,8 @@ export type SaveFeedbackPayload = {
 };
 
 export async function saveFeedback(payload: SaveFeedbackPayload) {
-	const apiUrl =
-		import.meta.env.MODE === 'development'
-			? import.meta.env.VITE_BACKEND_API_URL_LOCAL
-			: import.meta.env.VITE_BACKEND_API_URL_PROD;
+	const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
+
 	const response = await fetch(`${apiUrl}/feedback`, {
 		method: 'POST',
 		headers: {

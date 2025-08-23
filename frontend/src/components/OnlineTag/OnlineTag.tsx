@@ -5,10 +5,7 @@ export const OnlineTag = () => {
 	const [isOnline, setIsOnline] = useState<boolean | null>(null);
 
 	const checkServer = async () => {
-		const apiUrl =
-			import.meta.env.MODE === 'development'
-				? import.meta.env.VITE_RASA_API_URL_LOCAL
-				: import.meta.env.VITE_RASA_API_URL_PROD;
+		const apiUrl = import.meta.env.VITE_RASA_API_URL;
 
 		try {
 			await axios.post(apiUrl, {}, { timeout: 5000 });

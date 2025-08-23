@@ -55,10 +55,7 @@ export class ChatManager {
 			history: [...this.chatHistory.history, { text: '...', sender: Sender.Bot, isGenerated: false }],
 		});
 
-		const apiUrl =
-			import.meta.env.MODE === 'development'
-				? import.meta.env.VITE_RASA_API_URL_LOCAL
-				: import.meta.env.VITE_RASA_API_URL_PROD;
+		const apiUrl = import.meta.env.VITE_RASA_API_URL;
 
 		try {
 			const raw = await fetch(apiUrl, {
