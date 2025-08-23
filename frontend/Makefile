@@ -4,7 +4,7 @@ ENV_FILE   = .env
 
 start-container:
 	yarn install
-	yarn dev --host 0.0.0.0
+	yarn dev
 
 decrypt:
 	@echo "🔓 Decrypting $(VAULT_FILE) into $(ENV_FILE)..."
