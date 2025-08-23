@@ -15,7 +15,7 @@ export const AboutPage = () => {
 					<div className="bg-white pl-0 p-8 text-left">
 						<Headline headline="About the project" />
 					</div>
-					<div className="max-w-[800px] h-auto text-black py-6 maintext text-left">
+					<div className="max-w-[800px] h-auto text-black py-6 text-left">
 						<p className="font-bold">Why are we developing a chatbot for the HWR Berlin?</p>
 						<br></br>
 						<p>

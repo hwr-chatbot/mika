@@ -15,14 +15,16 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<BrowserRouter>
 		<ChatProvider>
-			<div className="app max-w-[1440px] ml-auto mr-auto h-auto">
-				<Header />
-				<Routes>
-					<Route path="/" element={<ChatPage />} />
-					<Route path="/about" element={<AboutPage />} />
-					<Route path="/feedback" element={<FeedbackPage />} />
-				</Routes>
-				<Footer />
+			<div className="bg-[#f7f8f8]">
+				<div className="max-w-[1440px] ml-auto mr-auto h-auto">
+					<Header />
+					<Routes>
+						<Route path="/" element={<ChatPage />} />
+						<Route path="/about" element={<AboutPage />} />
+						<Route path="/feedback" element={<FeedbackPage />} />
+					</Routes>
+					<Footer />
+				</div>
 			</div>
 		</ChatProvider>
 	</BrowserRouter>
