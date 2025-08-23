@@ -4,7 +4,7 @@ ENV_FILE   = .env
 
 start-container:
 	yarn install
-	yarn ts-node-dev src/server.ts
+	yarn dev
 
 init:
 	yarn install
