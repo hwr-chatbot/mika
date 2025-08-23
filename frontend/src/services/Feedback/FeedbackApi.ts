@@ -1,3 +1,5 @@
+import axios, { AxiosError } from 'axios';
+
 export type SaveFeedbackPayload = {
 	userMessage: string;
 	botMessage: string;
@@ -8,17 +10,13 @@ export type SaveFeedbackPayload = {
 export async function saveFeedback(payload: SaveFeedbackPayload) {
 	const apiUrl = import.meta.env.VITE_BACKEND_API_URL;
 
-	const response = await fetch(`${apiUrl}/feedback`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(payload),
-	});
+	try {
+		const response = await axios.post(`${apiUrl}/feedback`, payload);
 
-	if (!response.ok) {
-		throw new Error(`Failed to save feedback: ${response.statusText}`);
+		return response.data;
+	} catch (error) {
+		const err = error as AxiosError<{ message?: string }>;
+		const message = err.response?.data?.message || err.message || 'Failed to save feedback';
+		throw new Error(message);
 	}
-
-	return response.json();
 }

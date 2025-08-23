@@ -1,4 +1,6 @@
+import axios, { AxiosError } from 'axios';
 import { ChatMessage, Sender } from 'src/type/ChatMessage';
+
 type RasaResponse = {
 	text?: string;
 	image?: string;
@@ -6,18 +8,6 @@ type RasaResponse = {
 
 type ChatHistory = {
 	history: ChatMessage[];
-};
-
-type RequestInit = {
-	method?: string;
-	headers?: Record<string, string>;
-	body?: never;
-	mode?: 'cors' | 'no-cors' | 'same-origin';
-};
-
-const requestOptions: RequestInit = {
-	method: 'POST',
-	mode: 'cors',
 };
 
 const delay = async (ms: number) => {
@@ -58,14 +48,10 @@ export class ChatManager {
 		const apiUrl = import.meta.env.VITE_RASA_API_URL;
 
 		try {
-			const raw = await fetch(apiUrl, {
-				...requestOptions,
-				body: JSON.stringify({
-					sender: 'user',
-					message,
-				}),
+			const { data } = await axios.post<RasaResponse[]>(apiUrl, {
+				sender: Sender.User,
+				message,
 			});
-			const data: RasaResponse[] = await raw.json();
 
 			const response: string = data.map((res) => res.text ?? res.image ?? '').join('\r\n');
 
@@ -76,7 +62,9 @@ export class ChatManager {
 
 			this.setChatHistory({ history: updated });
 		} catch (error) {
-			console.error('Error while fetching!\n', error);
+			const err = error as AxiosError<{ message?: string }>;
+			const message = err.response?.data?.message || err.message || 'Failed to send message';
+			throw new Error(message);
 		}
 	}
 }
