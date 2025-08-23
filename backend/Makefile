@@ -2,10 +2,12 @@ VAULTPASS_FILE = ./../vaultpass
 VAULT_FILE = .env.enc
 ENV_FILE   = .env
 
-init:
-	make decrypt
+start-container:
 	yarn install
-	yarn prisma generate
+	yarn ts-node-dev src/server.ts
+
+init:
+	yarn install
 	make migrate
 
 migrate:

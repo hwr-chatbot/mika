@@ -1,10 +1,10 @@
 VAULTPASS_FILE = ./../vaultpass
-VAULT_FILE     = .env.enc
-ENV_FILE       = .env
+VAULT_FILE = .env.enc
+ENV_FILE   = .env
 
-init:
-	make decrypt
+start-container:
 	yarn install
+	yarn dev --host 0.0.0.0
 
 decrypt:
 	@echo "🔓 Decrypting $(VAULT_FILE) into $(ENV_FILE)..."

@@ -9,4 +9,9 @@
 *.sln
 *.sw?
 
+# Project files
 vaultpass
+.env
+node_modules
+/generated/prisma
+.rasa

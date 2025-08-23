@@ -1,8 +1,3 @@
-start-frontend:
-	cd frontend && make start
-
-start-backend:
-	cd backend && make start
-
-start-rasa:
-	cd rasa && make start
+decrypt-all:
+	cd backend && make decrypt
+	cd frontend && make decrypt

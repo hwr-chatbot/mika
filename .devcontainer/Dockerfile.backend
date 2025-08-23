@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install -y curl \
 
 USER node
 
-WORKDIR /workspace/backend
+WORKDIR /mika/backend

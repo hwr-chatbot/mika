@@ -1,96 +1,62 @@
 # MIKA
 
-**MIKA** is a modern chatbot application with a full-stack architecture. It consists of:
-
-- A **React + TypeScript + Vite frontend** for user interaction.
-- A **Fastify + TypeScript + Prisma backend** for database management and API endpoints.
-- A **Rasa conversational AI service** for natural language understanding and chatbot logic.
-
-This README will guide you through setting up and running the project locally.
-
-## Table of Contents
-
-1. [Prerequisites](#prerequisites)
-2. [Installation](#installation)
-3. [Running the Services](#running-the-services)
-4. [Project Structure](#project-structure)
+MIKA is the official chatbot of the HWR (Hochschule für Wirtschaft und Recht Berlin), designed to assist international students by answering commonly asked questions. This repository contains the source code for the frontend, backend, and Rasa service, all configured to run in a VS Code Devcontainer for a seamless and consistent development environment.
 
 ## Prerequisites
 
-Before running the project, make sure you have the following installed:
+Before setting up the project, make sure the following tools are installed on your system:
 
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [Yarn](https://yarnpkg.com/)
-- [Docker](https://www.docker.com/)
-- [Make](https://www.gnu.org/software/make/) (for `make` commands)
+### 1. Visual Studio Code (VS Code)
 
-## Installation
+VS Code is required to use the devcontainer setup ([https://code.visualstudio.com/](https://code.visualstudio.com/)).
 
-1. Clone the repository:
+### 2. Docker
 
-```bash
-git clone https://github.com/yourusername/mika.git
-cd mika
-```
+Docker is required to run all services inside containers ([https://www.docker.com](https://www.docker.com/products/docker-desktop/)).
 
-2. Install dependencies for frontend and backend:
+### 3. Ansible / Ansible Vault
+
+Required to decrypt encrypted environment files.
 
 ```bash
-# Frontend
-cd frontend
-yarn install
-
-# Backend
-cd ../backend
-yarn install
+pip install ansible
 ```
 
-3. Set up your database (for Prisma backend):
+## Project Setup
+
+Follow these steps to get the project running locally and inside the VS Code devcontainer:
+
+### 1. Create the Vault Password File
+
+Create a file named `vaultpass` in the **project root** and write your vault password into it:
 
 ```bash
-cd backend
-npx prisma migrate dev
+echo "your-vault-password" > vaultpass
 ```
 
-## Running the Services
+> ⚠️ Keep this file private and do not commit it to version control.
 
-You can start all three services individually. Make sure to open separate terminals if needed:
+### 2. Decrypt Environment Files
 
-### Frontend
-
-This will start the React + Vite frontend at `http://localhost:5173`:
+Run the following command to decrypt all encrypted `.env` files using Ansible Vault:
 
 ```bash
-make start-frontend
+make decrypt-all
 ```
 
-### Backend
+This will generate the required `.env` files for development.
 
-This starts the Fastify backend API at `http://localhost:8080`:
+### 3. Open in VS Code Devcontainer
 
-```bash
-make start-backend
-```
+1. Open the project in VS Code.
+2. When prompted to **rebuild the devcontainer**, choose **Rebuild**.
 
-### Rasa Service
+The devcontainer will install dependencies and set up the environment automatically.
 
-This launches the Rasa conversational AI service at `http://localhost:5005`:
+## Project structue
 
-```bash
-make start-rasa
-```
+The repository is organized as follows:
 
-## Project Structure
-
-```
-mika/
-├─ frontend/          # React + Vite frontend
-├─ backend/           # Fastify + Prisma backend
-├─ rasa/              # Rasa conversational AI
-├─ Makefile           # Commands to start services
-└─ README.md
-```
-
-- **frontend/**: Contains all UI code and components.
-- **backend/**: Handles API requests, database interactions, and Prisma models.
-- **rasa/**: Contains Rasa NLU, dialogue models, and training data.
+- Frontend: Built with Vite, TypeScript, React, and Tailwind CSS for a modern, responsive user interface.
+- Backend: Powered by Fastify, Prisma, and MySQL for efficient API and database management.
+- Rasa: Implements the chatbot's conversational AI logic using Rasa.
