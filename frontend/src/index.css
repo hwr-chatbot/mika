@@ -21,6 +21,7 @@
 }
 
 #root {
+	background-color: #f7f8f8;
 	font-family: 'DIN', sans-serif;
 	letter-spacing: calc(0.8px - 0.025em);
 	font-synthesis: none;
