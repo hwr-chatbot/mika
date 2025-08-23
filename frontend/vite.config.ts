@@ -11,10 +11,6 @@ export default defineConfig({
 			plugins: [tailwindcss()],
 		},
 	},
-	test: {
-		globals: false,
-		environment: 'jsdom',
-	},
 	preview: {
 		allowedHosts: ['mika.lehre.hwr-berlin.de'],
 	},
