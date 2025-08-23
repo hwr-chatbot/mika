@@ -20,6 +20,8 @@ Required to decrypt encrypted environment files.
 
 ```bash
 pip install ansible
+# or
+brew install ansible
 ```
 
 ## Project Setup
