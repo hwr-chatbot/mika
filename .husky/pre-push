@@ -1,0 +1,7 @@
+echo "Running frontend lint and format..."
+(cd frontend && yarn lint:check && yarn format:check) || { echo "Frontend checks failed"; exit 1; }
+
+echo "Running backend lint and format..."
+(cd backend && yarn lint:check && yarn format:check) || { echo "Backend checks failed"; exit 1; }
+
+echo "All checks passed!"

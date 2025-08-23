@@ -5,7 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"lint": "eslint src --ext .js,.ts --fix",
-		"format": "prettier --write \"src/**/*.{js,ts}\""
+		"lint:check": "eslint src --ext .js,.ts",
+		"format": "prettier --write \"src/**/*.{js,ts}\"",
+		"format:check": "prettier --check \"src/**/*.{js,ts}\""
 	},
 	"dependencies": {
 		"@fastify/cors": "^11.1.0",
