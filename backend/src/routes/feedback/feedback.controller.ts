@@ -1,30 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { createFeedback } from '../../services/feedback.service.js';
 import { Prisma } from '@prisma/client';
-
-enum FeedbackOptions {
-	Good = 'good',
-	Bad = 'bad',
-}
-
-enum FeedbackType {
-	UnpreciseAnswer = 'Unprecise Answer',
-	WrongAnswer = 'Wrong Answer',
-	IncompleteAnswer = 'Incomplete Answer',
-	MisleadingAnswer = 'Misleading Answer',
-}
-
-type ProvidedFeedback = {
-	option: FeedbackOptions;
-	type?: FeedbackType;
-	comment?: string;
-};
-
-type SaveFeedbackPayload = {
-	userMessage: string;
-	botMessage: string;
-	feedback: ProvidedFeedback;
-};
+import { SaveFeedbackPayload } from '@mika/shared';
 
 type FeedbackRequest = FastifyRequest<{
 	Body: SaveFeedbackPayload;

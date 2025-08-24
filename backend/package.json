@@ -1,10 +1,13 @@
 {
-	"name": "mika-backend",
+	"name": "@mika/backend",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "node --loader ts-node/esm --watch src/server.ts",
+		"dev": "concurrently \"tsc -b --watch\" \"nodemon dist/server.js\"",
+		"build": "tsc -b",
+		"watch": "tsc -b --watch",
+		"start": "node dist/server.js",
 		"lint": "eslint src --ext .js,.ts --fix",
 		"lint:check": "eslint src --ext .js,.ts",
 		"format": "prettier --write \"src/**/*.{js,ts}\"",
@@ -14,6 +17,7 @@
 		"@fastify/cors": "^11.1.0",
 		"@fastify/env": "^5.0.2",
 		"@fastify/formbody": "^8.0.2",
+		"@mika/shared": "*",
 		"@prisma/client": "^6.14.0",
 		"fastify": "^5.5.0",
 		"prisma": "^6.14.0"
@@ -22,9 +26,11 @@
 		"@types/node": "^24.3.0",
 		"@typescript-eslint/eslint-plugin": "^8.40.0",
 		"@typescript-eslint/parser": "^8.40.0",
+		"concurrently": "^9.2.0",
 		"eslint": "^9.34.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.4",
+		"nodemon": "^3.1.10",
 		"prettier": "^3.6.2",
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^5.9.2"

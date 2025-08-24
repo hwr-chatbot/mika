@@ -2,6 +2,11 @@
   "name": "mika",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
   "devDependencies": {
     "husky": "^9.1.7"
   },

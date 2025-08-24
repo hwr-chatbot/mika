@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ChatMessage } from 'src/type/ChatMessage';
-import { FeedbackOptions, FeedbackType, ProvidedFeedback, SaveFeedbackPayload } from 'src/type/Feedback';
 
 import { FeedbackModal } from '@components/FeedbackModal/FeedbackModal';
 
@@ -9,6 +8,8 @@ import { ThumbsUpIconFilled } from '@icons/ThumbsUpIconFilled';
 
 import { useChat } from '@services/ChatManager/ChatContext';
 import { saveFeedback } from '@services/Feedback/FeedbackApi';
+
+import { FeedbackOptions, FeedbackType, ProvidedFeedback, SaveFeedbackPayload } from '@mika/shared';
 
 type MessageActionsProps = {
 	index: number;

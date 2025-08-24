@@ -1,0 +1,21 @@
+{
+	"name": "@mika/shared",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"private": true,
+	"scripts": {
+		"lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+		"lint:check": "eslint src --ext .js,.jsx,.ts,.tsx",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+		"format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^8.40.0",
+		"@typescript-eslint/parser": "^8.40.0",
+		"eslint": "^9.34.0",
+		"typescript": "^5.9.2"
+	}
+}

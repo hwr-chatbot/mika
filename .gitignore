@@ -15,3 +15,5 @@ vaultpass
 node_modules
 /generated/prisma
 .rasa
+dist
+*.tsbuildinfo

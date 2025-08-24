@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-import { SaveFeedbackPayload } from '@type/Feedback';
+import { SaveFeedbackPayload } from '@mika/shared';
 
 export async function saveFeedback(payload: SaveFeedbackPayload) {
 	const apiUrl = import.meta.env.VITE_BACKEND_API_URL;

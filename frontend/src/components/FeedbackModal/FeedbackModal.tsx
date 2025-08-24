@@ -5,7 +5,7 @@ import { ChatBubble } from '@components/ChatBox/ChatBubble';
 
 import { XIcon } from '@icons/XIcon';
 
-import { FeedbackType } from '@type/Feedback';
+import { FeedbackType } from '@mika/shared';
 
 type FeedbackModalProps = {
 	userMessage: ChatMessage;

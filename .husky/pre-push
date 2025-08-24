@@ -4,4 +4,7 @@ echo "Running frontend lint and format..."
 echo "Running backend lint and format..."
 (cd backend && yarn lint:check && yarn format:check) || { echo "Backend checks failed"; exit 1; }
 
+echo "Running shared lint and format..."
+(cd shared && yarn lint:check && yarn format:check) || { echo "Shared checks failed"; exit 1; }
+
 echo "All checks passed!"

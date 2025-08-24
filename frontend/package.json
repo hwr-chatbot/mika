@@ -1,11 +1,11 @@
 {
-	"name": "mika-frontend",
+	"name": "@mika/frontend",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite --host 0.0.0.0",
-		"build": "tsc && vite build",
+		"build": "tsc -b && vite build",
 		"preview": "vite preview",
 		"lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
 		"lint:check": "eslint src --ext .js,.jsx,.ts,.tsx",
@@ -13,6 +13,7 @@
 		"format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
 	},
 	"dependencies": {
+		"@mika/shared": "*",
 		"axios": "^1.11.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",

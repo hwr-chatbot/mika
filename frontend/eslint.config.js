@@ -68,6 +68,11 @@ export default [
 							position: 'before',
 						},
 						{
+							pattern: '@mika/**',
+							group: 'internal',
+							position: 'before',
+						},
+						{
 							pattern: '@assets/**',
 							group: 'internal',
 							position: 'before',
